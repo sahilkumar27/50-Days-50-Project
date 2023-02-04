@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    /* ye background color tb hi used hoga jab mera navigation bar rotate hoga */
+    background-color: #333;
+    color: #222;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+.container{
+    background-color: #fafafa;
+
+    /* So transform origin when you rotate the origin by default is going to be like in the middle, it just turns and rotate, However we want roate from the top left position */
+    transform-origin: top left;
+
+    /* Now, we do want to transition on that because we don't want to just flick, you know, rotate real quick. When we rotate we want it to be smooth*/
+    transition: transform 0.5s linear;
+
+    /* whole view port horizontally */  
+    width: 100vw;
+    /* min-height: 100vh; */
+    padding: 50px;
+
+}
+
+.container.show-nav{
+    /* With the help of transform property we can rotate the navigation bar at 20 degree. NOTE: transform CSS property lets you rotate,scale,skew or translate the element */
+    transform: rotate(-20deg);
+}
+
+.circle-container{
+    position: fixed;
+    top: -100px;
+    left: -100px;
+
+}
+
+/* this is for navigation bar on left side top most */
+.circle{
+    background-color: #ff7979;
+    /* whenever you change the height width, you have to change as well as circle-container that you habe writen in .circle-container{ } */
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    position: relative;
+    /* transition as same as thr contaier rotation  */
+    transition: transform 0.5s linear;
+}
+
+/* Jaise nav bar ko open kiye, waise turant remove bar aa jayega */
+.container.show-nav .circle{
+    transform: rotate(-70deg);
+}
+
+.circle button{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    background: transparent;
+    border: 0;
+    font-size: 26px;
+    color: #fff;
+}
+
+/* : means targeting focus in button of circle */
+.circle button:focus{
+    outline: none;
+}
+
+/* circle button the ID is open */
+.cirlce button#open{
+    left: 60%;
+}
+
+.circle button#close{
+    top: 60%;   /* this is relative to the circle */
+    transform: rotate(90deg);
+
+    /* transform-origin k madat se jab roate hoga too mera close button top left mein show krrega */
+    transform-origin: top left;
+}
+
+/* jab nav bar ko click krrenge too mera nav li show hoga X axis pe or 0.3s transition-delay k sath */
+.container.show-nav + nav li{
+    transform: translateX(0);
+    transition-delay: 0.3s;
+}
+
+/* when you click then our navigation bar show at the left side */
+nav{
+    position: fixed;
+    bottom: 48px;
+    left: 0;
+    z-index: 100;
+    cursor: pointer;
+}
+
+nav ul{
+    list-style: none;
+    padding-left: 30px;
+}
+
+nav ul li{
+    text-transform: uppercase;
+    color: #fff;
+    margin: 40px 0;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in;
+}
+
+a:hover{
+    background-color: red;
+}
+
+/* thoda sa space chaiye font awesome(logo) k baad isliye i ko target krr rhe hai */
+nav ul li i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+nav ul li + li{
+    /* what happens here that li after the initial li are going to stick of 15 pixels (see About)*/
+    margin-left: 15px;
+    transform: translateX(-150%);
+
+}
+
+/* Contacr list going to stick of 30 pixels  */
+nav ul li + li + li{
+    margin-left: 30px;
+    transform: translateX(-200%);
+}
+
+
+.content img{
+    max-width: 100%;
+}
+
+.content{
+    max-width: 1000px;
+    /* 50px - top bottom, auto - left and right, keep it at the middle. So even if we stretch it out, you know's it's going to have a thousand pixel with Max*/
+    margin: 50px auto;
+}
+
+/* And then for one sided content, each one of those is going to take the margin away from that */
+.content h1{
+    margin: 0;
+}
+
+/* And then for the small tag for the author */
+.content small{
+    color: #555;
+    font-style: italic;
+}
+/* And for the paragraph */
+.content p{
+    color: #333;
+    /* let's increase thr line height */
+    line-height: 1.5;
+} 
