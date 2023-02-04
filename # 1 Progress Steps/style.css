@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/* custom property:- we set using custom property notation and are accessed usning the var() function. It's just like declare the :root globaly(like --main-color:black;) and accessing using var in anywhere, whenver we want (like color: var(--main-color;))  */
+:root{
+    --line-border-fill: #3498db;
+    --line-border-empty: #e0e0e0;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #FFFBF5;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+.container{
+    text-align: center;
+}
+
+.progress-container{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+
+.progress-container::before{
+    /* The content property is used to insert generated content */
+    content: '';
+    background-color: var(--line-border-empty) ;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    /* here width represent the empty line */
+    width: 100%;
+    z-index: -1;
+}
+
+.progress{
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    /* The translate() CSS function repositions an element in the horizontal and/or vertical directions, x-horizontal and y-vertical */
+    transform: translateY(-50%);
+    height: 4px;
+    width: 0%;
+    z-index: -1;
+    /* transition on it, because when we do click previous or next, mtlb ki jaise next krrenge too blue wale line phela se dusra mein jayega mtlb ki next progress*/
+    transition: 0.4s ease;
+}
+
+.circle{
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-border-empty);
+    transition: 0.4s ease;
+
+}
+
+.circle.active{
+    border-color: var(--line-border-fill);   
+}
+
+.btn{
+    background-color: var(--line-border-fill);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    /* 8px-top bottom && 30px-left right */
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.btn:active{
+    /* ye effect hota jab next pe click krrenge too thoda effect ayega */
+    transform: scale(0.98); 
+}
+
+.btn:focus{
+    outline: 0;
+}
+
+.btn:disabled{
+    background-color: var(--line-border-empty);
+    /* if it's disabled, we can;t you know, it gives us that not allowed cursor can't click */
+    cursor: not-allowed;
+}
