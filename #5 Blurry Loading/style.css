@@ -1,0 +1,33 @@
+
+
+*{
+    box-sizing: border-box 
+}
+
+body{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.bg{
+    /* center(X axis for horizontal) center(Y axis for vertical)/ cover for background position */
+    background: url('https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+    position: absolute;
+    top: -30;
+    left: -30;
+
+    /* calculate uska width or height jo blur ho rha hai white white charo tarf uska hata dega*/
+    width: calc(100vw + 60px);   /* left right */ 
+    height: calc(100vh + 60px);   /* top bottom */
+    z-index: -1;
+    filter: blur(0px); 
+}
+.loading-text{
+    font-size: 50px;
+    color: #fff;
+     
+}
