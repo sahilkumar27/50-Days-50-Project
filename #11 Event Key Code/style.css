@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #e1e1e1;
+    font-family: 'Muli' sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.key{
+    border: 1px solid #999;
+    background-color: #eee;
+    /* 1px 1px for both horizontal and vertical offset and 3px for blur and the color of RGB(0-red, 0-green, 0-blue, 0.1-alpha)*/
+    box-shadow: 1px 1px 3px rgb(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    flex-direction: column;
+    margin: 10px;
+    min-width: 150px;
+    /* here position is relative becasue the small tags insdie of the key class are going to be positioned absolute */
+    position: relative;
+}
+
+.key small{
+    position: absolute;
+    /* negative value mera jo bhi likha hua rhega box k aandar usko bahar nikal dega */
+    top: -24px;
+    left: 0;
+    align-items: center;
+    width: 100%;
+    color: #555;
+    font-size: 14px;
+}
