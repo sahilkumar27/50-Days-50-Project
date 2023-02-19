@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f0f0f0;
+    font-family: 'Muli', sans-serif;
+}
+
+h1{
+    margin: 50px 0 30px;
+    text-align: center;
+}
+
+.faq-container{
+    max-width: 600px; 
+    margin: 0 auto;
+}
+
+.faq{
+    background-color: transparent;
+    border: 1px solid #9fa4a8;
+    border-radius: 10px;
+    margin: 20px 0;
+    padding: 30px;
+    position: relative;
+    /* overflow: hidden - means nothing out of the container */
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.faq.active{
+    background-color: #fff;
+
+    /* rgb represent the color but the rgba color represents the color value of rgba with the ALPHA channel(opacity)  */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* with the helop of pseduo selector when the faq is active it represents Hello, whenever we used font awesome Unicode, tb humlog backslash(\) ka used krenge or fir uska unicode likh denge jo used krna hai humlog ko. Fir font-family k anndar font awesome ko include krenge  */
+.faq.active::before,
+.faq.active::after
+{
+    content: '\f075';
+    font-family: 'Font Awesome 5 Free';
+    color: #2ecc71;
+    /* 7 times whatever the root html elemnt font size is */
+    font-size: 7rem;
+    position: absolute;
+    opacity: 0.2;
+    top: 20px;
+    left: 20px;
+    /* Z index of zero so that we make sure that it's behind everything else */
+    z-index: 0;
+}
+
+.faq.active::before{
+    color: #3498db;
+    top: -10px;
+    left: -30px;
+    transform: rotateY(180deg);
+}
+
+.faq-title{
+    margin: 0 35px 0 0;
+}
+
+.faq-text{
+    /* display none rhega too text show mt kro */
+    display: none;
+    margin: 30px 0 0;
+}
+
+.faq.active .faq-text{
+    /* jab FAQ active rhe too display ko block kr do*/
+    display: block;   
+}
+
+/* for Button, we don't want to show the Cheveron(button) if it's expanded and we don't to show the X if it's not expanded */
+.faq-toggle{
+    background-color: transparent;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    padding: 0;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    height: 30px;
+    width: 30px;
+}
+
+.faq-toggle:focus{
+    outline: 0;
+}
+
+/* X icon right here, times to dispaly none */
+.faq-toggle .fa-times{
+    display: none;
+} 
+
+/* So now we only see the Chevron, Now if it's active, we do want to see the times */
+.faq.active .faq-toggle .fa-times{
+    /* set the icon white */
+    color: #fff;
+    display: block;
+} 
+
+/* jab chevron ko down krenge too mera fa-times(cross symbol) show krege isliye chevron ko none kr diye */
+.faq.active .faq-toggle .fa-chevron-down{
+    display: none;
+} 
+
+.faq.active .faq-toggle{
+    background-color: #9fa4a8;
+}
